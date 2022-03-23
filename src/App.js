@@ -6,18 +6,21 @@ import { Container } from 'react-bootstrap';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
+import Landing from './pages/landing/Landing'
 
 import Header from './components/Header';
 import Footer from './components/Footer';
 
 function App() {
+  const userInfo = null
   return (
     <BrowserRouter>  
           <Header/>
             <Container>
             <Switch>
               <Route exact path="/" >
-                <Home />
+                {userInfo && (<Home />)}
+                {!userInfo && (<Landing/>)}
               </Route>
               <Route path="/login" >
                 <Login />
