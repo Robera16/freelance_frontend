@@ -7,7 +7,7 @@ export default function Header() {
   const userInfo = null
   return (
     <header>
-      <Navbar bg="primary" variant="dark" style={{ padding: "20px"}} className="navbar-default">
+      <Navbar bg="primary" variant="dark" className="py-3 navbar-default">
       <Container>
         <LinkContainer to='/' >
            <Navbar.Brand>Ethio-Freelance</Navbar.Brand>
