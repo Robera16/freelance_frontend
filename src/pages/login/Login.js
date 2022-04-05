@@ -8,7 +8,7 @@ export default function Login() {
     <FormContainer>
      <h1>Log In</h1>
         
-        <Form>
+        <Form autoComplete='off'>
             <Form.Group controlId='email'>
                 <Form.Label>Email Address</Form.Label>
                 <Form.Control

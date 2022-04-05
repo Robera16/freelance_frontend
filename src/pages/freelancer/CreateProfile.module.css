@@ -1,0 +1,15 @@
+.container{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.container li{
+    display: inline-block;
+    margin-left: 4px;
+}
+.container li p {
+    padding-left: 15px;
+    border-radius: 15px;
+    color: grey;
+    font-size: small;
+} 
