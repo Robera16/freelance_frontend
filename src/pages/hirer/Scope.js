@@ -5,6 +5,7 @@ import {Form, Button} from 'react-bootstrap'
 export default function Scope({difficulty, setDifficulty, duration, setDuration, experience, setExperience, navigation}) {
 
   const {previous, next} = navigation
+  
   return (
       <FormContainer>
         <Form.Group>
@@ -104,7 +105,7 @@ export default function Scope({difficulty, setDifficulty, duration, setDuration,
             <Button 
               variant="primary"  
               onClick={next}
-            // className={skills.length > 0 ? '': 'disabled'}
+             className={difficulty&&duration&&experience ? '': 'disabled'}
             >
               Next: Budget
             </Button>

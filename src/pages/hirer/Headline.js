@@ -2,7 +2,7 @@ import React from 'react'
 import {Form, Button} from 'react-bootstrap'
 import FormContainer from '../../components/FormContainer'
 
-export default function Headline({headline, setHeadline, navigation}) {
+export default function Headline({headline, setHeadline, description, setDescription, navigation}) {
     // {formData, setForm, navigation}
     // const {headline} = formData
     // const {next} = navigation
@@ -12,7 +12,7 @@ export default function Headline({headline, setHeadline, navigation}) {
     //     navigation.next()
     // }
     const handleNext = () => {
-        console.log('inside handle next: ', headline)
+        // console.log('inside handle next: ', headline)
         navigation.next()
     }
   return (
@@ -28,11 +28,21 @@ export default function Headline({headline, setHeadline, navigation}) {
                 onChange={(e) => setHeadline(e.target.value)}
                 />
             </Form.Group>
+            
+            <Form.Group controlId="description">
+                <Form.Label>Describe your job</Form.Label>
+                <Form.Control 
+                    as="textarea" 
+                    rows={5} 
+                    value={description}  
+                    onChange={(e) => setDescription(e.target.value)}
+                />
+            </Form.Group>
 
             <Button 
                 variant="primary" 
                 onClick={handleNext}
-                className={headline ? '': 'disabled'}
+                className={headline&&description ? '': 'disabled'}
                 >
                 Next: Skills
             </Button> 

@@ -17,20 +17,33 @@ const steps = [
 
 export default function MultiStepForm() {
     const[headline, setHeadline] = useState('')
+    const[description, setDescription] = useState('')
     const[skills, setSkills] = useState([])
     const[difficulty, setDifficulty] = useState('')
     const[duration, setDuration] = useState('')
     const[experience, setExperience] = useState('')
-    // const defaultData = {
-    //     headline,
-    //     skills: [],
-    // }
-//   const [formData, setForm] = useForm(defaultData);
+    const[budget, setBudget] = useState('')
+    const[fromHourlyRate, setFromHourlyRate] = useState('')
+    const[toHourlyRate, setToHourlyRate] = useState('')
+
+   
     const{step, navigation} = useStep({initialStep: 0, steps})
     const {id} = step;
    
-//   const props = {formData, setForm, navigation}
-    const props = {headline, setHeadline,skills, setSkills, difficulty, setDifficulty, duration, setDuration, experience, setExperience, navigation}
+
+    const props = {
+        headline, setHeadline,
+        description, setDescription,
+        skills, setSkills, 
+        difficulty, setDifficulty, 
+        duration, setDuration, 
+        experience, setExperience,
+        budget, setBudget,
+        fromHourlyRate, setFromHourlyRate,
+        toHourlyRate, setToHourlyRate, 
+        navigation
+    }
+
   switch(id){
       case 'headline':
           return <Headline {...props} />
