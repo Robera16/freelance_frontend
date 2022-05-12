@@ -67,7 +67,7 @@ export default function Scope({difficulty, setDifficulty, duration, setDuration,
               type="radio"
             />
         </Form.Group>
-
+ 
         <Form.Group>
             <Form.Label>What level of experience will it need </Form.Label>
             <Form.Check 

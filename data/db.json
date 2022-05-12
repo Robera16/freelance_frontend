@@ -1,0 +1,70 @@
+{
+    "jobs": [
+        {
+            "id":1,
+            "posterId": 2,
+            "category": "Digital",
+            "subcategory": "Web developer",
+            "headline": "Need a web developer",
+            "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. In ex minus sint explicabo debitis vero corrupti eos corporis non illo consequuntur reiciendis ea cupiditate aliquam animi, ratione distinctio consequatur? Ducimus eum quos dolorum fuga, dolore dicta ad distinctio nobis, officiis accusamus enim sint numquam voluptates quisquam commodi? Dicta asperiores voluptatibus at repudiandae ullam, magni dignissimos voluptatem, nulla qui, suscipit illo vel temporibus quisquam omnis necessitatibus deleniti mollitia.",
+            "skills": ["python", "java", "javascript"],
+            "difficulty": "Medium",
+            "duration": "3-6 month",
+            "experience": "Intermediate",
+            "budget": "500 birr",
+            "fromHourlyRate": 5,
+            "toHourlyRate": 10,
+            "posted": "4 hours"
+        },
+
+        {
+            "id":2,
+            "posterId": 1,
+            "category": "Manual",
+            "subcategory": "Technician",
+            "headline": "Need a skilled technician",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum veniam nihil animi assumenda necessitatibus nobis nisi fugit vel, laboriosam quibusdam deleniti non sequi doloribus labore, quo autem cumque perferendis aliquid, possimus excepturi. Assumenda delectus incidunt est optio eligendi quia, ab, et dolorem pariatur ipsa voluptates distinctio, nisi voluptatum quos recusandae id sapiente quaerat commodi ipsam. Reprehenderit, eaque mollitia provident earum incidunt ratione cumque recusandae, nihil hic ipsa iusto voluptatem repellat illum qui, blanditiis harum minus. Provident nisi quia magnam deserunt voluptate ex excepturi, commodi repellendus ut accusamus harum possimus debitis dolorem praesentium labore ratione porro accusantium minima a nesciunt! Qui!", 
+            "skills": ["skilled", "polite", "whatever"],
+            "difficulty": "Medium",
+            "duration": "1-3 month",
+            "experience": "Intermediate",
+            "budget": "400 birr",
+            "fromHourlyRate": 25,
+            "toHourlyRate": 100,
+            "posted": "2 days"
+        }
+    ],
+
+    "freelanceUsers": [
+        {
+            "id": 1,
+            "name": "freelancer1",
+            "email": "freelancer1@gmail.com",
+            "password":"test123",
+            "location":"akaki kality"
+        },
+        {
+            "id": 2,
+            "name": "freelancer2",
+            "email": "freelancer2@gmail.com",
+            "password":"test456",
+            "location":"addis ketema"
+        }
+    ],
+    "hirerUsers":  [
+        {
+            "id": 1,
+            "name": "poster1",
+            "email": "poster1@gmail.com",
+            "password":"test123",
+            "location":"gulele"
+        },
+        {
+            "id": 2,
+            "name": "poster2",
+            "email": "poster2@gmail.com",
+            "password":"test456",
+            "location":"gergi"
+        }
+    ]
+}

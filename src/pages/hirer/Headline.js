@@ -33,6 +33,7 @@ export default function Headline({headline, setHeadline, description, setDescrip
                 <Form.Label>Describe your job</Form.Label>
                 <Form.Control 
                     as="textarea" 
+                    maxLength={356}
                     rows={5} 
                     value={description}  
                     onChange={(e) => setDescription(e.target.value)}

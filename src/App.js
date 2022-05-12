@@ -8,12 +8,14 @@ import Signup from './pages/signup/Signup';
 import Landing from './pages/landing/Landing'
 import CreateProfile from './pages/freelancer/CreateProfile'
 import MultiStepForm from './pages/hirer/MultiStepForm';
+import JobDetail from './pages/job/JobDetail';
+
 
 import Header from './components/Header';
 import Footer from './components/Footer';
 
 function App() {
-  const userInfo = null
+  const userInfo = "user"
   return (
     
       <BrowserRouter>  
@@ -29,6 +31,9 @@ function App() {
                 </Route>
                 <Route path="/signup">
                   <Signup />
+                </Route>
+                <Route path="/jobd/:id">
+                  <JobDetail />
                 </Route>
                 <Route path='/create-profile'>
                   <CreateProfile />
