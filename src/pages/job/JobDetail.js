@@ -16,29 +16,23 @@ export default function JobDetail() {
   const jobDetails = useSelector(state => state.jobDetails)
   const {error, loading, job} = jobDetails
   
-  const [hirerName, setHirerName] = useState('')
-  const [hirerEmail, setHirerEmail] = useState('')
-
-
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(listJobDetails(id))
-    if(job){
-      fetch(`http://127.0.0.1:8000/hirerUsers/${job.posterId}`)
-      .then(res => res.json())
-      .then(hirerData => {
-        setHirerName(hirerData.name)
-        setHirerEmail(hirerData.email)
-      })
-    }
-  }, [dispatch, id, job]) 
+  }, [dispatch, id]) 
 
+  const submitProposalHandler= () => {
+    history.push(`/proposal/job/${job.jobDetail.data.id}`)
+  }
+  // useEffect(() => {
+  //   return ()=> job=null
+  // }, [])
 
   return (
      
     <div>
-       
+      
       <Link to='/' className="btn btn-light my-3">Go Back</Link>
       {job &&
       // loading ? <Loader/>: error ? <Message variant='danger'>{error}</Message>: 
@@ -47,27 +41,27 @@ export default function JobDetail() {
         <Col md={9}>
           <ListGroup>
             <ListGroup.Item>
-                <h4>{job.headline}</h4>
-                {job.category}, {job.subcategory}
+                <h4>{job.jobDetail.data.headline}</h4>
+                {job.jobDetail.data.category}, {job.jobDetail.data.subcategory}
             </ListGroup.Item>
             <ListGroup.Item>
-                {job.description}
+                {job.jobDetail.data.description}
             </ListGroup.Item>
             <ListGroup.Item>
               <h6>Skills and Expertise</h6>
-              <ul className={styles.container}> {job.skills.map((skill) => (
+              <ul className={styles.container2}> {job.jobDetail.data.skills.map((skill) => (
                   <li key={skill}>
-                    <p className='bg-light pr-10px'>{skill}</p>
+                    <p className='bg-light'>{skill}</p>
                   </li>
               ))}</ul>
             </ListGroup.Item>
             <ListGroup.Item>
               <h6>Scope</h6>
-              {job.difficulty}  {job.duration} {job.experience}
+              {job.jobDetail.data.difficulty}  {job.jobDetail.data.duration} {job.jobDetail.data.experience}
             </ListGroup.Item>
             <ListGroup.Item>
               <h6>Budget</h6>
-              {job.budget},  {job.fromHourlyRate} to {job.toHourlyRate} birr/hour
+              {job.jobDetail.data.budget},  {job.jobDetail.data.fromHourlyRate} to {job.jobDetail.data.toHourlyRate} birr/hour
             </ListGroup.Item>
           </ListGroup>
         </Col>
@@ -75,17 +69,20 @@ export default function JobDetail() {
         <Col md={3}>
           <ListGroup>
             <ListGroup.Item>
-                <Button>Submit a Proposal</Button>
+                <Button onClick={submitProposalHandler}>Submit a Proposal</Button>
                 <Button className='mt-2'>Save job</Button>
             </ListGroup.Item>
             <ListGroup.Item>
               <h6>About the client</h6>
-              {/* {job.posterId} */}
+              {/* {job.jobDetail.data.posterId} */}
               <div>
-                Name- {hirerName}
+                Name- {job.hirerDetail.data.name}
               </div>
               <div>
-                Email- {hirerEmail}
+                Email- {job.hirerDetail.data.email}
+              </div>
+              <div>
+                Location- {job.hirerDetail.data.location}
               </div>
               
             </ListGroup.Item>

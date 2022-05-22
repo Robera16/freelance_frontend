@@ -11,6 +11,7 @@ import {
 
 
 export const listJobs = () => async(dispatch) => {
+           
     try{
         dispatch({type: JOB_LIST_REQUEST})
         const {data} = await axios.get('http://127.0.0.1:8000/jobs/')
@@ -29,7 +30,10 @@ export const listJobs = () => async(dispatch) => {
 export const listJobDetails = (id) => async(dispatch) => {
     try{
         dispatch({type: JOB_DETAILS_REQUEST})
-        const {data} = await axios.get(`http://127.0.0.1:8000/jobs/${id}`)
+        const jobDetail = await axios.get(`http://127.0.0.1:8000/jobs/${id}`)
+        const hirerDetail = await axios.get(`http://127.0.0.1:8000/hirerUsers/${jobDetail.data.posterId}`)
+
+        const data={jobDetail, hirerDetail}
         dispatch({type: JOB_DETAILS_SUCCESS, payload: data})
     }catch(error) {
         dispatch({

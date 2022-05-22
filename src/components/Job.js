@@ -16,7 +16,7 @@ export default function Job({job}) {
     //       </ListGroup.Item>  
     // </ListGroup>
 
-    <Card style={{fontSize:'15px'}}>
+    <Card style={{fontSize:'15.3px', marginTop:'10px', borderColor: 'white'}}>
       <Card.Body>
         <Card.Title>
         <Link to={`/jobd/${job.id}`} >
@@ -30,9 +30,9 @@ export default function Job({job}) {
           {job.description}
         </Card.Text>
        
-          <ul className={styles.container}> {job.skills.map((skill) => (
+          <ul className={styles.container2}> {job.skills.map((skill) => (
                 <li key={skill}>
-                  <p className='bg-light pr-10px'>{skill}</p>
+                  <p className='bg-light'>{skill}</p>
                 </li>
           ))}</ul>
         

@@ -28,6 +28,7 @@ export default function Home() {
             ))
           }
         </Col>
+
         <Col>
             put something here to describe user role
         </Col>

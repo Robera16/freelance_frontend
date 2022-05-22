@@ -9,7 +9,7 @@ import Landing from './pages/landing/Landing'
 import CreateProfile from './pages/freelancer/CreateProfile'
 import MultiStepForm from './pages/hirer/MultiStepForm';
 import JobDetail from './pages/job/JobDetail';
-
+import Proposal from './pages/proposal/Proposal';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -34,6 +34,9 @@ function App() {
                 </Route>
                 <Route path="/jobd/:id">
                   <JobDetail />
+                </Route>
+                <Route path='/proposal/job/:id'>
+                  <Proposal />
                 </Route>
                 <Route path='/create-profile'>
                   <CreateProfile />

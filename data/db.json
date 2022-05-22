@@ -11,7 +11,7 @@
             "difficulty": "Medium",
             "duration": "3-6 month",
             "experience": "Intermediate",
-            "budget": "500 birr",
+            "budget": 500,
             "fromHourlyRate": 5,
             "toHourlyRate": 10,
             "posted": "4 hours"
@@ -24,11 +24,11 @@
             "subcategory": "Technician",
             "headline": "Need a skilled technician",
             "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum veniam nihil animi assumenda necessitatibus nobis nisi fugit vel, laboriosam quibusdam deleniti non sequi doloribus labore, quo autem cumque perferendis aliquid, possimus excepturi. Assumenda delectus incidunt est optio eligendi quia, ab, et dolorem pariatur ipsa voluptates distinctio, nisi voluptatum quos recusandae id sapiente quaerat commodi ipsam. Reprehenderit, eaque mollitia provident earum incidunt ratione cumque recusandae, nihil hic ipsa iusto voluptatem repellat illum qui, blanditiis harum minus. Provident nisi quia magnam deserunt voluptate ex excepturi, commodi repellendus ut accusamus harum possimus debitis dolorem praesentium labore ratione porro accusantium minima a nesciunt! Qui!", 
-            "skills": ["skilled", "polite", "whatever"],
+            "skills": ["skilled", "polite", "whatever", "stuffs"],
             "difficulty": "Medium",
             "duration": "1-3 month",
             "experience": "Intermediate",
-            "budget": "400 birr",
+            "budget": 400,
             "fromHourlyRate": 25,
             "toHourlyRate": 100,
             "posted": "2 days"
@@ -65,6 +65,12 @@
             "email": "poster2@gmail.com",
             "password":"test456",
             "location":"gergi"
+        }
+    ],
+    "proposal" :[
+        {
+            "id": 1,
+            "jobId": 2
         }
     ]
 }

@@ -24,7 +24,7 @@ export default function Budget({
                   value={budget}
                   onChange={(e) => setBudget(e.target.value)}
                 />
-          
+           
             <Form.Label>Hourly Rate</Form.Label>
               <Row>
                 <Col>
