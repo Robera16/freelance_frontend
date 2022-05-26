@@ -1,9 +1,11 @@
+import axios from 'axios'
 import React, {useState, useRef} from 'react'
 import FormContainer from '../../components/FormContainer'
 import {Form, Button, Row, Col} from 'react-bootstrap'
-
+import {useDispatch, useSelector} from 'react-redux'
 import styles from './CreateProfile.module.css'
- 
+import {Link, useHistory} from 'react-router-dom'
+
 export default function CreateProfile() {
 
     let[newSkill, setNewSkill] = useState('')
@@ -13,6 +15,10 @@ export default function CreateProfile() {
     let[bio, setBio] = useState('')
     const skillInput = useRef(null) 
 
+    const userLogin = useSelector(state => state.userLogin)
+    const { userInfo } = userLogin
+    const history = useHistory()
+    
     const handleAdd = (e) => {
       
         e.preventDefault()
@@ -33,7 +39,6 @@ export default function CreateProfile() {
     const deleteSkill = (skill) => {
       setSkills((prevSkills) => {
         return prevSkills.filter(ski => ski !== skill)
-      // console.log(skill, skills)
     })}
    
     const handleChange = (e) => {
@@ -41,9 +46,21 @@ export default function CreateProfile() {
       e.target.value === 'Manual' ?  setSubCategory('Painter') : setSubCategory('Web Development')  
     }
 
-    const submitHandler= (e) => {
+    const submitHandler = async(e) => {
       e.preventDefault()
-      console.log(skills, bio, category, subCategory)
+
+      const config = {
+        headers: {
+            'Content-type': 'application/json',
+            Authorization: `Bearer ${userInfo.token}`
+        }
+    }
+     await axios.put(
+        'http://localhost:8001/api/users/profile/update/',
+        { 'about': bio, 'offered_service': category, 'offered_service_type': subCategory },
+        config
+    )
+    history.push('/')
     }
     
   return (
@@ -78,7 +95,7 @@ export default function CreateProfile() {
           </li>
         ))}</ul>
 
-        <Form.Group controlId="Bio">
+        <Form.Group controlId="bio">
           <Form.Label>Bio</Form.Label>
           <Form.Control 
             as="textarea" 
@@ -98,7 +115,7 @@ export default function CreateProfile() {
                     <option value='Digital'>Digital</option>
                 </Form.Select>
 
-                <Form.Select 
+                <Form.Select
                     onChange={(e) => setSubCategory(e.target.value)} 
                 >
                    {category === 'Manual' && 

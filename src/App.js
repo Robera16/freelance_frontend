@@ -13,9 +13,12 @@ import Proposal from './pages/proposal/Proposal';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
+import {useDispatch, useSelector} from 'react-redux'
 
 function App() {
-  const userInfo = "user"
+  const userLogin = useSelector(state => state.userLogin)
+    const { userInfo } = userLogin
+    console.log('here')
   return (
     
       <BrowserRouter>  
@@ -23,8 +26,7 @@ function App() {
               <Container>
               <Switch>
                 <Route exact path="/" >
-                  {userInfo && (<Home />)}
-                  {!userInfo && (<Landing/>)}
+                  {userInfo ? <Home />: <Landing/>}
                 </Route>
                 <Route path="/login" >
                   <Login />
@@ -39,7 +41,7 @@ function App() {
                   <Proposal />
                 </Route>
                 <Route path='/create-profile'>
-                  <CreateProfile />
+                  {userInfo ? <CreateProfile /> : <Landing/>}
                 </Route>
                 <Route path='/multi-step'>
                   <MultiStepForm />

@@ -1,14 +1,17 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import FormContainer from '../../components/FormContainer'
 import {Link, useHistory} from 'react-router-dom'
 import {Form ,Button, Row, Col} from 'react-bootstrap'
 import Message from '../../components/Message'
-
+import Loader from '../../components/Loader'
+import { useDispatch, useSelector } from 'react-redux'
+import { register } from '../../actions/userActions'
 
 export default function Signup() {
     const history = useHistory()
 
-    const [name, setName] = useState('')
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
@@ -17,6 +20,19 @@ export default function Signup() {
     const [agreement, setAgreement] = useState('')
     const [message, setMessage] = useState('')
     
+    const dispatch = useDispatch()
+    const userRegister = useSelector(state => state.userRegister)
+    const { error, loading, userInfo } = userRegister
+
+    useEffect(() => {
+        if (userInfo) {
+            if (applyAs==='freelancer'){
+                history.push('/create-profile')
+            } else {
+                history.push('/multi-step')
+            }
+        }
+    }, [history, userInfo])
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -25,28 +41,37 @@ export default function Signup() {
             setMessage('Passwords do not match')
         }else{
             setMessage('')
-            history.push('/create-profile')
+            dispatch(register(firstName, lastName, email, password, applyAs, location))
         }
-
-
-        console.log(name, email, password, confirmPassword, applyAs, location, agreement)
     }
 
   return (
     <FormContainer>
      <h1>Sign Up</h1>
         {message && <Message variant='danger'>{message}</Message>}
-
+        {error && <Message variant='danger'>{error}</Message>}
+        {loading && <Loader />}
         <Form onSubmit = {submitHandler} autoComplete="off">
 
-            <Form.Group controlId='username'>
-                <Form.Label>name</Form.Label>
+            <Form.Group controlId='firstName'>
+                <Form.Label>First name</Form.Label>
                 <Form.Control
                     required
-                    type='name'
-                    placeholder='Enter Username'
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    type='text'
+                    placeholder='First Name'
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                />
+            </Form.Group>
+
+            <Form.Group controlId='lastName'>
+                <Form.Label>Last name</Form.Label>
+                <Form.Control
+                    required
+                    type='text'
+                    placeholder='Last Name'
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
                 />
             </Form.Group>
 
@@ -84,7 +109,7 @@ export default function Signup() {
                 />
             </Form.Group>
             
-            <Form.Group>
+            <Form.Group controlId='appliedAs'>
                 <Form.Label>Apply as</Form.Label>
                 <Form.Check id='freelancer' name="applyAs" onChange={(e) => setApplyAs('freelancer')} label="Freelancer" type="radio"/>
                 <Form.Check id='hirer' name="applyAs" onChange={(e) => setApplyAs('hirer')} label="Hirer" type="radio"/>

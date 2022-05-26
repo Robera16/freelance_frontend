@@ -1,19 +1,50 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import FormContainer from '../../components/FormContainer'
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import {Form ,Button, Row, Col} from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import Message from '../../components/Message'
+import Loader from '../../components/Loader'
+import { login } from '../../actions/userActions'
 
 export default function Login() {
+  
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const history = useHistory()
+  const dispatch = useDispatch()
+
+  const userLogin = useSelector(state => state.userLogin)
+  const { error, loading, userInfo } = userLogin
+
+  useEffect(() => {
+    if (userInfo) {
+        if(userInfo.is_admin){
+            // history.push('http://localhost:8001/admin')
+        }else{
+            history.push('/')
+        }
+    }
+  }, [history, userInfo])
+
+  const submitHandler = (e) => {
+    e.preventDefault()
+    dispatch(login(email, password))
+  }
+
   return (
     <FormContainer>
      <h1>Log In</h1>
-        
-        <Form autoComplete='off'>
+     {error && <Message variant='danger'>{error}</Message>}
+     {loading && <Loader />}
+        <Form onSubmit = {submitHandler} autoComplete="off">
             <Form.Group controlId='email'>
                 <Form.Label>Email Address</Form.Label>
                 <Form.Control
                     type='email'
                     placeholder='Enter Email'
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                 />
             </Form.Group>
 
@@ -22,6 +53,8 @@ export default function Login() {
                 <Form.Control
                     type='password'
                     placeholder='Enter Password'
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                 />
             </Form.Group>
 

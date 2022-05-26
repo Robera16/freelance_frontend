@@ -1,10 +1,22 @@
 import React from 'react'
-import {Navbar, Container, Nav} from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
-
+import {Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
+import { LinkContainer} from 'react-router-bootstrap'
+import {useDispatch, useSelector} from 'react-redux'
+import { logout } from '../actions/userActions'
+import {Link, useHistory} from 'react-router-dom'
 
 export default function Header() {
-  const userInfo = null
+    const userLogin = useSelector(state => state.userLogin)
+    const { userInfo } = userLogin
+    const history = useHistory()
+
+    const dispatch = useDispatch()
+
+    const logoutHandler = () => {
+        dispatch(logout())
+        history.push('/')
+    }
+
   return (
     <header>
       <Navbar bg="primary" variant="dark" className="py-3 navbar-default">
@@ -21,10 +33,10 @@ export default function Header() {
               <Nav.Link>Home</Nav.Link>
             </LinkContainer>
 
-            <LinkContainer to=''>
+            <LinkContainer to='/features'>
               <Nav.Link>Features</Nav.Link>
             </LinkContainer>
-            <LinkContainer to=''>
+            <LinkContainer to='/pricing'>
               <Nav.Link>Pricing</Nav.Link>
             </LinkContainer>
           </React.Fragment>
@@ -46,15 +58,26 @@ export default function Header() {
         </Nav>
 
         <Nav>
-          <LinkContainer to="/login">
-            <Nav.Link>Log In</Nav.Link>
-          </LinkContainer>
+        {userInfo ? (
+            <NavDropdown title={userInfo.first_name} id='username'>
+                <LinkContainer to='/profile'>
+                       <NavDropdown.Item>Profile</NavDropdown.Item>
+                </LinkContainer>
+                <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
+            </NavDropdown>
 
-          <LinkContainer to='/signup'>
-            <Nav.Link>Sign Up</Nav.Link>
-          </LinkContainer>
+          ):(
+            <React.Fragment>
+            <LinkContainer to="/login">
+              <Nav.Link>Log In</Nav.Link>
+            </LinkContainer>
+  
+            <LinkContainer to='/signup'>
+              <Nav.Link>Sign Up</Nav.Link>
+            </LinkContainer>
+            </React.Fragment>
+          )}
         </Nav>
-
         </Navbar.Collapse>
       </Container>
       </Navbar>
