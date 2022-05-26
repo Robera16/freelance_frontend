@@ -10,11 +10,24 @@ import {
 } from '../constants/jobConstants'
 
 
-export const listJobs = () => async(dispatch) => {
+export const listJobs = () => async(dispatch, getState) => {
            
     try{
         dispatch({type: JOB_LIST_REQUEST})
-        const {data} = await axios.get('http://127.0.0.1:8000/jobs/')
+
+        const {
+            userLogin: { userInfo },
+        } = getState()
+        
+        const config = {
+            headers: {
+                'Content-type': 'application/json',
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+        const {data} = await axios.get('http://localhost:8001/api/jobs/get-jobs/',
+        config
+        )
         dispatch({type: JOB_LIST_SUCCESS, payload: data})
     }catch(error) {
         dispatch({

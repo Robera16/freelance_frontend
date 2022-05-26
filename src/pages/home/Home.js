@@ -23,6 +23,7 @@ export default function Home() {
       <Row>
         <Col md={8}>
           {loading ? <Loader/>: error ? <Message variant='danger'>{error}</Message>:
+            
             jobs?.map(job => (
                 <Job key={job.id} job={job} />
             ))

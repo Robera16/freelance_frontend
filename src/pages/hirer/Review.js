@@ -2,6 +2,8 @@ import React from 'react'
 import {Form, Button, ListGroup, Row, Col} from 'react-bootstrap'
 import styles from '../freelancer/CreateProfile.module.css'
 import {Link, useHistory} from 'react-router-dom'
+import {useDispatch, useSelector} from 'react-redux'
+import axios from 'axios'
 
 export default function Review({
     headline, setHeadline,
@@ -17,17 +19,41 @@ export default function Review({
 }) {
 
   const history = useHistory()
+  const userLogin = useSelector(state => state.userLogin)
+  const { userInfo } = userLogin
 
-  const submitHandler = (e) => {
+  const submitHandler = async(e) => {
     e.preventDefault()
 
-    console.log( headline, description, skills, 
-      difficulty, 
-      duration, 
-      experience, 
-      budget, 
-      fromHourlyRate, 
-      toHourlyRate)
+    const config = {
+      headers: {
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${userInfo.token}`
+      }
+    }
+     await axios.post(
+      'http://localhost:8001/api/jobs/create-job/',
+      {"category": "Digital", "subCategory": "web developer",
+        "headline": headline,
+        "description": description,
+        "difficulty": difficulty,
+        "duration": duration,
+        "experience": experience,
+        "budget": budget,
+        "fromHourlyRate": fromHourlyRate,
+        "toHourlyRate": toHourlyRate,
+        "requiredSkill": skills
+    },
+      config
+      )
+
+    // console.log( headline, description, skills, 
+    //   difficulty, 
+    //   duration, 
+    //   experience, 
+    //   budget, 
+    //   fromHourlyRate, 
+    //   toHourlyRate)
 
       history.push('/')
 
