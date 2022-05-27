@@ -2,6 +2,7 @@ import React from 'react'
 import {Card, Button, ListGroup, Row, Col} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 import styles from '../pages/freelancer/CreateProfile.module.css'
+import moment from 'moment'
 
 export default function Job({job}) {
   console.log(job)
@@ -15,15 +16,15 @@ export default function Job({job}) {
           </Link>
           </Card.Title>
         <Card.Text>
-          {job.difficulty} Budget: {job.budget} Posted {job.posted}
+          {job.difficulty} Budget: {job.budget} Posted {moment(job.posted).fromNow()} 
         </Card.Text>
         <Card.Text>
           {job.description}
         </Card.Text>
        
           <ul className={styles.container2}> {job.requiredSkill.map((skill) => (
-                <li key={skill}>
-                  <p className='bg-light'>{skill}</p>
+                <li key={skill.id}>
+                  <p className='bg-light'>{skill.name}</p>
                 </li>
           ))}</ul>
         
