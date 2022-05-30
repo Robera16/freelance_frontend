@@ -340,7 +340,7 @@ export default function Proposal() {
             </ListGroup>
 
             <Button type='submit' variant='secondary' className = 'my-3'> 
-                submit prop
+                submit proposal
             </Button>
             </Form>
             </div>

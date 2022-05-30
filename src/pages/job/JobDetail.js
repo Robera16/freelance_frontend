@@ -42,16 +42,16 @@ export default function JobDetail() {
           <ListGroup>
             <ListGroup.Item>
                 <h4>{job.jobDetail.data.headline}</h4>
-                {job.jobDetail.data.category}, {job.jobDetail.data.subcategory}
+                {job.jobDetail.data.category}, {job.jobDetail.data.subCategory}
             </ListGroup.Item>
             <ListGroup.Item>
                 {job.jobDetail.data.description}
             </ListGroup.Item>
             <ListGroup.Item>
               <h6>Skills and Expertise</h6>
-              <ul className={styles.container2}> {job.jobDetail.data.skills.map((skill) => (
-                  <li key={skill}>
-                    <p className='bg-light'>{skill}</p>
+              <ul className={styles.container2}> {job.jobDetail.data.requiredSkill.map((skill) => (
+                  <li key={skill.id}>
+                    <p className='bg-light'>{skill.name}</p>
                   </li>
               ))}</ul>
             </ListGroup.Item>
@@ -61,7 +61,7 @@ export default function JobDetail() {
             </ListGroup.Item>
             <ListGroup.Item>
               <h6>Budget</h6>
-              {job.jobDetail.data.budget},  {job.jobDetail.data.fromHourlyRate} to {job.jobDetail.data.toHourlyRate} birr/hour
+              {job.jobDetail.data.budget} birr,  {job.jobDetail.data.fromHourlyRate} to {job.jobDetail.data.toHourlyRate} birr/hour
             </ListGroup.Item>
           </ListGroup>
         </Col>
@@ -76,7 +76,7 @@ export default function JobDetail() {
               <h6>About the client</h6>
               {/* {job.jobDetail.data.posterId} */}
               <div>
-                Name- {job.hirerDetail.data.name}
+                Name- {job.hirerDetail.data.first_name} {job.hirerDetail.data.Last_name}
               </div>
               <div>
                 Email- {job.hirerDetail.data.email}

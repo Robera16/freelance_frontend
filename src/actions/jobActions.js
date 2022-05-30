@@ -18,7 +18,7 @@ export const listJobs = () => async(dispatch, getState) => {
         const {
             userLogin: { userInfo },
         } = getState()
-        
+
         const config = {
             headers: {
                 'Content-type': 'application/json',
@@ -43,8 +43,8 @@ export const listJobs = () => async(dispatch, getState) => {
 export const listJobDetails = (id) => async(dispatch) => {
     try{
         dispatch({type: JOB_DETAILS_REQUEST})
-        const jobDetail = await axios.get(`http://127.0.0.1:8000/jobs/${id}`)
-        const hirerDetail = await axios.get(`http://127.0.0.1:8000/hirerUsers/${jobDetail.data.posterId}`)
+        const jobDetail = await axios.get(`http://localhost:8001/api/jobs/${id}`)
+        const hirerDetail = await axios.get(`http://localhost:8001/api/users/${jobDetail.data.posterId}`)
 
         const data={jobDetail, hirerDetail}
         dispatch({type: JOB_DETAILS_SUCCESS, payload: data})

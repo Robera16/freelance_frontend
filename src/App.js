@@ -18,9 +18,7 @@ import {useDispatch, useSelector} from 'react-redux'
 function App() {
   const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
-    console.log('here')
   return (
-    
       <BrowserRouter>  
             <Header/>
               <Container>
