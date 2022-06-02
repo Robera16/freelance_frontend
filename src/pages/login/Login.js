@@ -21,6 +21,7 @@ export default function Login() {
     if (userInfo) {
         if(userInfo.is_admin){
             // history.push('http://localhost:8001/admin')
+            history.push('/')
         }else{
             history.push('/')
         }

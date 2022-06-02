@@ -11,7 +11,7 @@ export default function Job({job}) {
     <Card style={{fontSize:'15.3px', marginTop:'10px', borderColor: 'white'}}>
       <Card.Body>
         <Card.Title>
-        <Link to={`/jobd/${job.id}`} >
+        <Link to={`/job/${job.id}`} >
           {job.headline}
           </Link>
           </Card.Title>

@@ -3,6 +3,7 @@ import { useParams, useHistory } from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import { listJobDetails } from '../../actions/jobActions'
 import {Form, Row, Col, ListGroup, Button, FormLabel} from 'react-bootstrap'
+import axios from 'axios'
 
 export default function Proposal() {
 
@@ -69,9 +70,35 @@ export default function Proposal() {
   }, [bid])
 
 
-  const submitHandler= (e) => {
+  const userLogin = useSelector(state => state.userLogin)
+  const { userInfo } = userLogin
+
+  const submitHandler = async(e) => {
     e.preventDefault()
-    console.log(paymentBy, milestoneList, bid, bidServiceFee, bidReceive, totalPrice, serviceFee, receive, duration, coverLetter)
+
+    const config = {
+        headers: {
+            'Content-type': 'application/json',
+            Authorization: `Bearer ${userInfo.token}`
+        }
+      }
+       await axios.post(
+        `http://localhost:8001/api/proposals/create-proposal/${id}/`,
+        {
+          "paymentBy": paymentBy, 
+          "bid": bid,
+          "bidServiceFee": bidServiceFee,
+          "bidReceive": bidReceive,
+          "milestone": milestoneList,
+          "totalPrice": totalPrice,
+          "serviceFee": serviceFee,
+          "receive": receive,
+          "duration": duration,
+          "coverLetter": coverLetter
+      },
+        config
+        )
+    // console.log(paymentBy,  bid, bidServiceFee, bidReceive, milestoneList, totalPrice, serviceFee, receive,  duration, coverLetter)
   }
 
 

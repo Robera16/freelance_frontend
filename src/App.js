@@ -10,7 +10,7 @@ import CreateProfile from './pages/freelancer/CreateProfile'
 import MultiStepForm from './pages/hirer/MultiStepForm';
 import JobDetail from './pages/job/JobDetail';
 import Proposal from './pages/proposal/Proposal';
-
+import Message from './pages/messages/Message';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import {useDispatch, useSelector} from 'react-redux'
@@ -32,7 +32,7 @@ function App() {
                 <Route path="/signup">
                   <Signup />
                 </Route>
-                <Route path="/jobd/:id">
+                <Route path="/job/:id">
                   <JobDetail />
                 </Route>
                 <Route path='/proposal/job/:id'>
@@ -43,6 +43,9 @@ function App() {
                 </Route>
                 <Route path='/multi-step'>
                   <MultiStepForm />
+                </Route>
+                <Route path='/message'>
+                  <Message />
                 </Route>
             </Switch>
             </Container>
