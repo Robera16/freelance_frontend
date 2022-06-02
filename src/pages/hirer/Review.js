@@ -55,7 +55,7 @@ export default function Review({
     //   fromHourlyRate, 
     //   toHourlyRate)
 
-      history.push('/')
+      history.push('/dashboard')
 
   }
 
