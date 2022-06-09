@@ -15,7 +15,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import PostedJobDetail from './pages/hirer/PostedJobDetail';
 import SubmittedProposals from './pages/hirer/SubmittedProposals';
-
+import FreelancerProposal from './pages/freelancer/FreelancerProposal';
 import Dashboard from './pages/hirer/Dashboard';
 import {useDispatch, useSelector} from 'react-redux'
 
@@ -45,7 +45,6 @@ function App() {
                 <Route path="/submitted-proposals/:id">
                   <SubmittedProposals />
                 </Route>
-
                 <Route path='/proposal/job/:id'>
                   <Proposal />
                 </Route>
@@ -60,6 +59,9 @@ function App() {
                 </Route>
                 <Route path='/dashboard'>
                   <Dashboard />
+                </Route>
+                <Route path='/freelancer-proposal/:id'>
+                  <FreelancerProposal />
                 </Route>
             </Switch>
             </Container>

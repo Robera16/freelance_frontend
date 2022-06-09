@@ -7,6 +7,7 @@ import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 import { login } from '../../actions/userActions'
 
+
 export default function Login() {
   
   const [email, setEmail] = useState('')
@@ -20,9 +21,15 @@ export default function Login() {
   useEffect(() => {
     if (userInfo) {
         if(userInfo.is_admin){
+            
+            // history.replace('http://localhost:3000','http://localhost:8001/admin')
             // history.push('http://localhost:8001/admin')
             history.push('/')
-        }else{
+        }
+        else if(userInfo.applyAs==='hirer') {
+            history.push('/dashboard')
+        }
+        else{
             history.push('/')
         }
     }
@@ -32,7 +39,7 @@ export default function Login() {
     e.preventDefault()
     dispatch(login(email, password))
   }
-
+  console.log(userInfo)
   return (
     <FormContainer>
      <h1>Log In</h1>
