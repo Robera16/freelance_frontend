@@ -13,6 +13,7 @@ export default function CreateProfile() {
     const[category, setCategory] = useState('Manual')
     const[subCategory, setSubCategory] = useState('Painter')
     let[bio, setBio] = useState('')
+    const[photo, setPhoto] = useState('')
     const skillInput = useRef(null) 
 
     const userLogin = useSelector(state => state.userLogin)
@@ -57,9 +58,25 @@ export default function CreateProfile() {
     }
      await axios.put(
         'http://localhost:8001/api/users/profile/update/',
-        { 'skills': skills, 'about': bio, 'offered_service': category, 'offered_service_type': subCategory },
+        { 'skills': skills, 'about': bio,'offered_service': category, 'offered_service_type': subCategory },
         config
     )
+
+     let form_data = new FormData();
+     form_data.append('photo', photo)
+     form_data.append('idd', userInfo.id)
+    const config2 = {
+      headers: {
+          'Content-type': "multipart/form-data",
+          Authorization: `Bearer ${userInfo.token}`
+      }
+  }
+    await axios.post(
+      'http://localhost:8001/api/users/profile/photo-update/',
+      form_data,
+      config2
+  )
+    console.log(photo)
     history.push('/')
     }
     
@@ -103,6 +120,31 @@ export default function CreateProfile() {
             value={bio}  
             onChange={(e) => setBio(e.target.value)}/>
         </Form.Group>
+
+        
+        <Form.Group controlId="photo" className='mt-3'>
+          <Form.Label>Photo</Form.Label>
+          <Form.Control 
+            type="file"  
+            onChange={(e) => setPhoto(e.target.files[0])}/>
+        </Form.Group>
+
+        {/* <input
+            type="file"
+            onChange={(e) => setPhoto(e.target.files[0])}
+          /> */}
+
+        {/* <Form.Group>
+        <Form.File
+          label="select"
+          custom
+          // type="file"
+          // className="custom-file-label"
+          // id="inputGroupFile01"
+          // onChange={(e) => setPhoto(e.target.files[0])}
+          // custom
+        />
+      </Form.Group> */}
 
         <Form.Group controlId='category' className='mt-3'>
                 <Form.Label>Service you offer</Form.Label>

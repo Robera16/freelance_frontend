@@ -11,7 +11,13 @@ export default function Job({job}) {
     <Card style={{fontSize:'15.3px', marginTop:'10px', borderColor: 'white'}}>
       <Card.Body> 
         <Card.Title>
-        <Link to={`/posted-job/${job.id}`} >
+        <Link to={`/posted-job/${job.id}`} 
+           style={{
+            color: '#5658', 
+            textDecoration: "none", 
+            fontSize: '25px'
+          }}
+        >
           {job.headline}
           </Link>
           </Card.Title>

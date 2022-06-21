@@ -28,7 +28,7 @@ export default function JobDetail() {
   // useEffect(() => {
   //   return ()=> job=null
   // }, [])
-
+  console.log(job)
   return (
      
     <div>
@@ -69,8 +69,17 @@ export default function JobDetail() {
         <Col md={3}>
           <ListGroup>
             <ListGroup.Item>
-                <Button onClick={submitProposalHandler}>Submit a Proposal</Button>
-                <Button className='mt-2'>Save job</Button>
+                <Button onClick={submitProposalHandler}
+                style={{ 
+                  marginLeft:"15%",
+                  marginRight:"15%"}}
+                >Submit a Proposal</Button>
+                <Button className='mt-2'
+                  style={{ 
+                    width: "65%",
+                    marginLeft:"15%",
+                    marginRight:"25%"}}
+                >Save job</Button>
             </ListGroup.Item>
             <ListGroup.Item>
               <h6>About the client</h6>

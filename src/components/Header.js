@@ -4,6 +4,7 @@ import { LinkContainer} from 'react-router-bootstrap'
 import {useDispatch, useSelector} from 'react-redux'
 import { logout } from '../actions/userActions'
 import {Link, useHistory} from 'react-router-dom'
+import Avatar from "@material-ui/core/Avatar"
 
 export default function Header() {
     const userLogin = useSelector(state => state.userLogin)
@@ -59,8 +60,9 @@ export default function Header() {
 
         <Nav>
         {userInfo ? (
-            <NavDropdown title={userInfo.first_name} id='username'>
-                <LinkContainer to='/profile'>
+            <NavDropdown title={userInfo.first_name} id='username'
+            >
+                <LinkContainer to={`/profile/${userInfo.id}`}>
                        <NavDropdown.Item>Profile</NavDropdown.Item>
                 </LinkContainer>
                 <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
