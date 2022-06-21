@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 import {Row, Col, ListGroup, Button} from 'react-bootstrap'
 import styles from '../freelancer/CreateProfile.module.css'
 
-export default function JobDetail() {
+export default function PostedJobDetail() {
   const{id} = useParams()
   const history = useHistory()
   const jobDetails = useSelector(state => state.jobDetails)
@@ -22,18 +22,15 @@ export default function JobDetail() {
     dispatch(listJobDetails(id))
   }, [dispatch, id]) 
 
-  const submitProposalHandler= () => {
-    history.push(`/proposal/job/${job.jobDetail.data.id}`)
+  const submittedProposalHandler = () => {
+    history.push(`/submitted-proposals/${job.jobDetail.data.id}`)
   }
-  // useEffect(() => {
-  //   return ()=> job=null
-  // }, [])
 
   return (
      
     <div>
-      
-      <Link to='/' className="btn btn-light my-3">Go Back</Link>
+    
+      <Link to='/dashboard' className="btn btn-light my-3">Go Back</Link>
       {job &&
       // loading ? <Loader/>: error ? <Message variant='danger'>{error}</Message>: 
       
@@ -69,13 +66,13 @@ export default function JobDetail() {
         <Col md={3}>
           <ListGroup>
             <ListGroup.Item>
-                <Button onClick={submitProposalHandler}>Submit a Proposal</Button>
-                <Button className='mt-2'>Save job</Button>
+                <Button onClick={submittedProposalHandler}>show submitted proposals</Button>
+                {/* <Button className='mt-2'>Save job</Button> */}
             </ListGroup.Item>
             <ListGroup.Item>
-              <h6>About the client</h6>
+              <h6>About something</h6>
               {/* {job.jobDetail.data.posterId} */}
-              <div>
+              {/* <div>
                 Name- {job.hirerDetail.data.first_name} {job.hirerDetail.data.Last_name}
               </div>
               <div>
@@ -83,7 +80,7 @@ export default function JobDetail() {
               </div>
               <div>
                 Location- {job.hirerDetail.data.location}
-              </div>
+              </div> */}
               
             </ListGroup.Item>
           </ListGroup>

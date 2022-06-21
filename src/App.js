@@ -46,6 +46,13 @@ function App() {
           <Route path="/jobd/:id">
             <JobDetail />
           </Route>
+          <Route path="/posted-job/:id">
+                  <PostedJobDetail />
+                </Route>
+                <Route path="/submitted-proposals/:id">
+                  <SubmittedProposals />
+                </Route>
+                <Route path='/proposal/job/:id'></Route>
           <Route path="/proposal/job/:id">
             <Proposal />
           </Route>
@@ -55,6 +62,15 @@ function App() {
           <Route path="/multi-step">
             <MultiStepForm />
           </Route>
+          <Route path='/message'>
+                  <Message />
+                </Route>
+                <Route path='/dashboard'>
+                  <Dashboard />
+                </Route>
+                <Route path='/freelancer-proposal/:id'>
+                  <FreelancerProposal />
+                </Route>
         </Switch>
       </Container>
       <Footer />

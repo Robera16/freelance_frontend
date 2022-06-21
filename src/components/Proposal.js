@@ -4,25 +4,26 @@ import {Link} from 'react-router-dom'
 import styles from '../pages/freelancer/CreateProfile.module.css'
 import moment from 'moment'
 
-export default function Job({job}) {
+export default function Proposal({proposal}) {
   
   return (
-    
-    <Card style={{fontSize:'15.3px', marginTop:'10px', borderColor: 'white'}}>
+    <div>     
+        <Card style={{fontSize:'15.3px', marginTop:'10px', borderColor: 'white'}}>
       <Card.Body>
         <Card.Title>
-        <Link to={`/job/${job.id}`} >
-          {job.headline}
+        <Link to={`/freelancer-proposal/${proposal.id}`} >
+          {proposal.user.username}
           </Link>
           </Card.Title>
         <Card.Text>
-          {job.difficulty} Budget: {job.budget} Posted {moment(job.posted).fromNow()} 
+          {proposal.user.offered_service}
+          {proposal.user.offered_service_type}
         </Card.Text>
         <Card.Text>
-          {job.description}
+            {proposal.user.about}
         </Card.Text>
        
-          <ul className={styles.container2}> {job.requiredSkill.map((skill) => (
+          <ul className={styles.container2}> {proposal.user.skill.map((skill) => (
                 <li key={skill.id}>
                   <p className='bg-light'>{skill.name}</p>
                 </li>
@@ -30,7 +31,7 @@ export default function Job({job}) {
         
       </Card.Body>
     </Card>
+    </div>
   )
 }
-
 

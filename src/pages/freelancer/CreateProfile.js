@@ -57,7 +57,7 @@ export default function CreateProfile() {
     }
      await axios.put(
         'http://localhost:8001/api/users/profile/update/',
-        { 'about': bio, 'offered_service': category, 'offered_service_type': subCategory },
+        { 'skills': skills, 'about': bio, 'offered_service': category, 'offered_service_type': subCategory },
         config
     )
     history.push('/')

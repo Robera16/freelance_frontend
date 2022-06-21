@@ -41,28 +41,28 @@ export default function Scope({difficulty, setDifficulty, duration, setDuration,
         <Form.Group>
             <Form.Label>How long will your work take</Form.Label>
             <Form.Check 
-              id='>6' 
+              id='more than 6 month' 
               name="duration" 
-              defaultChecked={duration==='>6' ? 'defaultChecked': ''}
-              onChange={(e) => setDuration('>6')} 
+              defaultChecked={duration==='more than 6 month' ? 'defaultChecked': ''}
+              onChange={(e) => setDuration('more than 6 month')} 
               label="more than 6 month" 
               type="radio"
             />
 
             <Form.Check 
-              id='3-6' 
+              id='3-6 month' 
               name="duration" 
-              defaultChecked={duration==='3-6' ? 'defaultChecked': ''} 
-              onChange={(e) => setDuration('3-6')} 
+              defaultChecked={duration==='3-6 month' ? 'defaultChecked': ''} 
+              onChange={(e) => setDuration('3-6 month')} 
               label="3-6 month" 
               type="radio"
             />
 
             <Form.Check 
-              id='1-3' 
+              id='1-3 month' 
               name="duration" 
-              defaultChecked={duration==='1-3' ? 'defaultChecked': ''} 
-              onChange={(e) => setDuration('1-3')} 
+              defaultChecked={duration==='1-3 month' ? 'defaultChecked': ''} 
+              onChange={(e) => setDuration('1-3 month')} 
               label="1-3 month" 
               type="radio"
             />

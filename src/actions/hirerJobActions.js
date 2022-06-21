@@ -25,7 +25,7 @@ export const listJobs = () => async(dispatch, getState) => {
                 Authorization: `Bearer ${userInfo.token}`
             }
         }
-        const {data} = await axios.get('http://localhost:8001/api/jobs/get-jobs/',
+        const {data} = await axios.get(`http://localhost:8001/api/jobs/get-posted-jobs/${userInfo.id}/`,
         config
         )
         dispatch({type: JOB_LIST_SUCCESS, payload: data})

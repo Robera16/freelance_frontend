@@ -1,7 +1,7 @@
 import React from 'react'
 import {Card, Button, ListGroup, Row, Col} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
-import styles from '../pages/freelancer/CreateProfile.module.css'
+import styles from '../freelancer/CreateProfile.module.css'
 import moment from 'moment'
 
 export default function Job({job}) {
@@ -9,9 +9,9 @@ export default function Job({job}) {
   return (
     
     <Card style={{fontSize:'15.3px', marginTop:'10px', borderColor: 'white'}}>
-      <Card.Body>
+      <Card.Body> 
         <Card.Title>
-        <Link to={`/job/${job.id}`} >
+        <Link to={`/posted-job/${job.id}`} >
           {job.headline}
           </Link>
           </Card.Title>
