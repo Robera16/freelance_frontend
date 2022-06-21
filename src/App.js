@@ -21,6 +21,9 @@ import UpdateProfile from "./pages/freelancer/UpdateProfile";
 import { useDispatch, useSelector } from "react-redux";
 import FindWork from "./pages/landing/findWork";
 import FindTalent from "./pages/landing/findTalent";
+import Message from "./components/Message";
+import { StreamChat } from "stream-chat";
+import { useState, useEffect } from "react";
 
 function App() {
   const userLogin = useSelector((state) => state.userLogin);
@@ -47,7 +50,7 @@ function App() {
           <Route path="/signup">
             <Signup />
           </Route>
-          <Route path="/jobd/:id">
+          <Route path="/job/:id">
             <JobDetail />
           </Route>
           <Route path="/posted-job/:id">
@@ -56,7 +59,6 @@ function App() {
           <Route path="/submitted-proposals/:id">
             <SubmittedProposals />
           </Route>
-          <Route path="/proposal/job/:id"></Route>
           <Route path="/proposal/job/:id">
             <Proposal />
           </Route>

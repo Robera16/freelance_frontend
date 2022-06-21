@@ -2,7 +2,7 @@ import React, { Component, useEffect, useState } from "react";
 import { applyMiddleware } from "redux";
 
 import { StreamChat } from "stream-chat";
-
+import { useLocation } from "react-router-dom";
 import {
   Chat,
   Channel,
@@ -17,12 +17,15 @@ import {
 
 import "stream-chat-react/dist/css/index.css";
 import { useDispatch, useSelector } from "react-redux";
+import Loader from "../../components/Loader";
 
 const apiKey = process.env.REACT_APP_STREAM_API_KEY;
 
 export default function Chatt() {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+
+  const location = useLocation();
   const user = {
     id: userInfo.id.toString(),
     name: userInfo.first_name,
@@ -33,21 +36,38 @@ export default function Chatt() {
   const sort = { last_message_at: -1 };
 
   const [client, setClient] = useState(null);
+  const [channel, setChannel] = useState(null);
   useEffect(() => {
     async function init() {
+      const state = location.state;
+      console.log(state);
       const chatClient = StreamChat.getInstance(apiKey);
 
       await chatClient.connectUser(user, chatClient.devToken(user.id));
 
-      // const channel = chatClient.channel("messaging", "talk", {
-      //   image: "https://www.drupal.org/files/project-images/react.png",
-      //   name: "React app development",
-      //   members: [user.id, "33"],
-      // });
+      // console.log(user.name + state.freelancer + state.proposalId.toString());
+      if (state) {
+        const channel = chatClient.channel(
+          "messaging",
+          user.name + state.freelancer + state.proposalId.toString(),
+          {
+            image: "https://www.drupal.org/files/project-images/react.png",
+            name:
+              user.name +
+              " - " +
+              state.freelancer +
+              state.proposalId.toString(),
+            members: [user.id.toString(), state.freelancerId.toString()],
+          }
+        );
+        setChannel(channel);
 
-      // await channel.watch();
+        await channel.watch();
+        await channel.sendMessage({ text: "Congratulations, You are Hired!" });
+      }
 
       setClient(chatClient);
+      console.log(channel);
     }
 
     init();
@@ -56,7 +76,7 @@ export default function Chatt() {
   }, []);
   console.log(userInfo);
 
-  if (!client) return <LoadingIndicator />;
+  if (!client) return <Loader />;
 
   return (
     <Chat client={client} theme="messaging light">
