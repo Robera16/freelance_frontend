@@ -16,7 +16,9 @@ export default function Headline({headline, setHeadline, description, setDescrip
         navigation.next()
     }
   return (
-    <FormContainer>
+    
+    <FormContainer >
+        <h1 style={{marginTop: '40px'}}></h1>
         {/* <Form onSubmit = {submitHandler} autoComplete='off'> */}
             <Form.Group className="mb-3" controlId="headline">
                 <Form.Label>Headline</Form.Label>
@@ -44,6 +46,7 @@ export default function Headline({headline, setHeadline, description, setDescrip
                 variant="primary" 
                 onClick={handleNext}
                 className={headline&&description ? '': 'disabled'}
+                style={{marginTop: '20px'}}
                 >
                 Next: Skills
             </Button> 

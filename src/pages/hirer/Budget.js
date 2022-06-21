@@ -13,6 +13,7 @@ export default function Budget({
 
   return (
     <FormContainer>
+      <h1 style={{marginTop: '30px'}}></h1>
       <FormGroup controlId='budget'>
         <Row>
           <Col md={9}>

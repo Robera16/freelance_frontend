@@ -8,6 +8,7 @@ export default function Scope({difficulty, setDifficulty, duration, setDuration,
   
   return (
       <FormContainer>
+        <h1 style={{marginTop: '30px'}}></h1>
         <Form.Group>
           <Form.Label>Project complexity</Form.Label>
             <Form.Check 
@@ -98,7 +99,9 @@ export default function Scope({difficulty, setDifficulty, duration, setDuration,
             />
         </Form.Group> 
          
-        <div className="d-flex justify-content-between">
+        <div className="d-flex justify-content-between"
+           style={{marginTop: '20px'}}
+        >
             <Button variant="primary"  onClick={previous}>
               Back
             </Button>

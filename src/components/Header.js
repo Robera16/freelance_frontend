@@ -21,7 +21,7 @@ export default function Header() {
   return (
     <header>
       <Navbar bg="primary" variant="dark" className="py-3 navbar-default">
-      <Container>
+      <Container> 
         <LinkContainer to='/' >
            <Navbar.Brand>Ethio-Freelance</Navbar.Brand>
         </LinkContainer>
@@ -40,6 +40,11 @@ export default function Header() {
             <LinkContainer to='/pricing'>
               <Nav.Link>Pricing</Nav.Link>
             </LinkContainer>
+            {userInfo.applyAs==="hirer" &&
+            <LinkContainer to='/multi-step'>
+              <Nav.Link>Post Job</Nav.Link>
+            </LinkContainer>
+            }
           </React.Fragment>
         ): (
           <>

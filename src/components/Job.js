@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom'
 import styles from '../pages/freelancer/CreateProfile.module.css'
 import moment from 'moment'
 
+
+ 
 export default function Job({job}) {
   
   return (

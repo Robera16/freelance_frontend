@@ -13,10 +13,10 @@ export default function SubmittedProposals(){
     }
     fetchData()
   }, [id]) 
- console.log(proposals)
+//  console.log(proposals)
   return (
-    <div>
-      <h1>Submitted Proposal</h1>
+    <div style={{marginTop: '70px'}}>
+    
         <Row>
         <Col md={8}>
         
@@ -27,7 +27,7 @@ export default function SubmittedProposals(){
         </Col>
 
         <Col>
-            put something here 
+           
         </Col>
       </Row> 
     </div> 

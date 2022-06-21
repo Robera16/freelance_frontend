@@ -6,12 +6,14 @@ import Loader from '../../components/Loader'
 import Message from '../../components/Message'
 import {Row, Col, Container, Card, Button} from 'react-bootstrap'
 import axios from 'axios'
-import Avatar from "@material-ui/core/Avatar"
+import { useHistory } from 'react-router-dom'
+
 
 export default function Home() {
   const dispatch = useDispatch()
   const jobList = useSelector(state => state.jobList)
   const[imageUrl, setImageUrl]=useState(null)
+  const history = useHistory()
   const {error, loading, jobs} = jobList
 
   const userLogin = useSelector(state => state.userLogin)
@@ -31,8 +33,13 @@ export default function Home() {
   
 
   useEffect(() => {
-    dispatch(listJobs())
-    fetchData()
+    if (userInfo.applyAs=="hirer"){
+      console.log('here man')
+      history.push('/dashboard')
+    }else{
+      dispatch(listJobs())
+      fetchData()
+    }
   }, [dispatch]) 
   
   return ( 

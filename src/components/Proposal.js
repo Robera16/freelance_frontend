@@ -11,13 +11,18 @@ export default function Proposal({proposal}) {
         <Card style={{fontSize:'15.3px', marginTop:'10px', borderColor: 'white'}}>
       <Card.Body>
         <Card.Title>
-        <Link to={`/freelancer-proposal/${proposal.id}`} >
-          {proposal.user.username}
+        <Link to={`/freelancer-proposal/${proposal.id}`} 
+          style={{
+            color: '#5658', 
+            textDecoration: "none", 
+            fontSize: '25px'
+          }}
+        >
+          {proposal.user.first_name} {proposal.user.Last_name}
           </Link>
           </Card.Title>
         <Card.Text>
-          {proposal.user.offered_service}
-          {proposal.user.offered_service_type}
+          {proposal.user.offered_service} | {proposal.user.offered_service_type}
         </Card.Text>
         <Card.Text>
             {proposal.user.about}

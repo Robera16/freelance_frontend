@@ -6,12 +6,14 @@ import Loader from '../../components/Loader'
 import Message from '../../components/Message'
 import {Row, Col, Container, Card,} from 'react-bootstrap'
 import axios from 'axios'
+import { useHistory } from 'react-router-dom'
+
 export default function Dashboard() {
   const dispatch = useDispatch()
   const jobList = useSelector(state => state.jobList)
   const {error, loading, jobs} = jobList
   const[imageUrl, setImageUrl]=useState(null)
-  
+  const history = useHistory()
   const userLogin = useSelector(state => state.userLogin)
   const { userInfo } = userLogin
   
@@ -28,8 +30,12 @@ export default function Dashboard() {
   }
 
   useEffect(() => {
-    dispatch(listJobs())
-    fetchData()
+    if (userInfo.applyAs=="freelancer"){
+      history.push('/')
+    }else{
+      dispatch(listJobs())
+      fetchData()
+    }
   }, [dispatch]) 
   
   return ( 

@@ -22,7 +22,7 @@ export default function Job({job}) {
           </Link>
           </Card.Title>
         <Card.Text>
-          {job.difficulty} Budget: {job.budget} Posted {moment(job.posted).fromNow()} 
+          {job.difficulty} - Budget: {job.budget} - Posted {moment(job.posted).fromNow()} 
         </Card.Text>
         <Card.Text>
           {job.description}

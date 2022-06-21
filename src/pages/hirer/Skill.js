@@ -32,6 +32,7 @@ export default function Skill({skills, setSkills, navigation}) {
 
   return (
     <FormContainer>
+      <h1 style={{marginTop: '40px'}}></h1>
       <Form.Group controlId='skills'>
         <Form.Label>Required Skill</Form.Label>
         <Row>

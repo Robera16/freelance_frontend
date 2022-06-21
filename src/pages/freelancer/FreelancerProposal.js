@@ -1,22 +1,44 @@
 import React,{useEffect, useState} from 'react'
 import {Row, Col, ListGroup, Button} from 'react-bootstrap'
+import {useDispatch, useSelector} from 'react-redux'
 import {useParams, useHistory } from 'react-router-dom'
 import Proposal from '../../components/Proposal'
 import axios from 'axios'
 import styles from './CreateProfile.module.css'
 import moment from 'moment'
+import Avatar from "@material-ui/core/Avatar"
 
 export default function FreelancerProposal() {
   const{id} = useParams()
   const [proposal, setProposal] = useState()
+  const[imageUrl, setImageUrl]=useState(null)
+
+  const userLogin = useSelector(state => state.userLogin)
+  const { userInfo } = userLogin
+
+  const fetchData2 = async(dataa) => {
+    const config = {
+      headers: {
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${userInfo.token}`
+      }
+    }
+      
+     const {data} = await axios.get(`http://localhost:8001/api/users/proposalPic/${dataa.user.id}`, config)
+     setImageUrl('http://localhost:8001'+ data.photo)
+      
+    //  console.log(imageUrl)
+  }
+
   useEffect(() => {
     async function fetchData() {
       const {data} = await axios.get(`http://localhost:8001/api/proposals/get-freelancer-proposal/${id}/`)
       setProposal(data)
+      fetchData2(data)
     }
     fetchData()
   }, [id]) 
-  console.log(proposal)
+
   return (
     <div style={{marginTop: "50px"}}>
       
@@ -24,11 +46,18 @@ export default function FreelancerProposal() {
             <ListGroup>
                 <ListGroup.Item>
                     <Row>
-                        <Col md={9}>
+                        <Col md={3}>
+                        <Avatar
+                              className="table_avatar"
+                              src={imageUrl}
+                              style={{ width: '77px', height: '77px' }}
+                            />
+                        </Col>
+                        <Col md={6} style={{marginLeft: "-170px", marginTop: '10px'}}>
                             <h4>{proposal.user.first_name}  {proposal.user.Last_name}</h4>
                             <h6>{proposal.user.location}</h6>
                         </Col>
-                        <Col className='mt-1' style={{marginLeft: "40px"}}>
+                        <Col style={{marginLeft: "200px", marginTop: '20px'}}>
                             <Button  variant='primary'> 
                             Hire Freelancer</Button>
                         </Col>

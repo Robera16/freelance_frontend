@@ -69,10 +69,10 @@ export default function PostedJobDetail() {
                 <Button onClick={submittedProposalHandler}>show submitted proposals</Button>
                 {/* <Button className='mt-2'>Save job</Button> */}
             </ListGroup.Item>
-            <ListGroup.Item>
+            {/* <ListGroup.Item>
               <h6>About something</h6>
-              {/* {job.jobDetail.data.posterId} */}
-              {/* <div>
+              {/* {job.jobDetail.data.posterId} 
+               <div>
                 Name- {job.hirerDetail.data.first_name} {job.hirerDetail.data.Last_name}
               </div>
               <div>
@@ -80,9 +80,9 @@ export default function PostedJobDetail() {
               </div>
               <div>
                 Location- {job.hirerDetail.data.location}
-              </div> */}
+              </div> 
               
-            </ListGroup.Item>
+            </ListGroup.Item> */}
           </ListGroup>
         </Col>
       </Row>
