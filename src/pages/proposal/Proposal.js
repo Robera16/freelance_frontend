@@ -99,12 +99,13 @@ export default function Proposal() {
         config
         )
     // console.log(paymentBy,  bid, bidServiceFee, bidReceive, milestoneList, totalPrice, serviceFee, receive,  duration, coverLetter)
+    history.push('/')
   }
 
 
   return (
-    <div>
-        <h3>Submit a proposal</h3>
+    <div style={{marginTop: '50px'}}>
+        
         {job &&
             <div>
             <Form onSubmit = {submitHandler} autoComplete="off">
@@ -366,7 +367,7 @@ export default function Proposal() {
                 </ListGroup.Item>
             </ListGroup>
 
-            <Button type='submit' variant='secondary' className = 'my-3'> 
+            <Button type='submit' variant='primary' className = 'my-3'> 
                 submit proposal
             </Button>
             </Form>
